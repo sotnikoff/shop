@@ -4,5 +4,5 @@ Test work for learning
 ## Installation
 
 ```
-Composer install
+composer install
 ```
