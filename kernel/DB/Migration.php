@@ -8,13 +8,12 @@
 
 namespace Kernel\DB;
 
-use Kernel\DB\DB;
-
 abstract class Migration
 {
 
     private $tableName;
     private $columns;
+    private $DB;
 
     abstract function getTable();
 
@@ -27,6 +26,8 @@ abstract class Migration
 
         $this->tableName = $this->tableEntity->tableName;
         $this->columns = $this->tableEntity->columns;
+
+        $this->DB = new DB();
 
         $this->getSqlQueryString();
 
@@ -51,12 +52,20 @@ abstract class Migration
     {
         $columns = $this->parseColumns();
 
-        $sqlString = "CREATE TABLE `shop`.`new_table` (
+        $sqlString = "CREATE TABLE `".$this->DB->getDatabase()."`.`".$this->tableName."` (
           `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
           ".$columns."
           PRIMARY KEY (`id`));";
 
-        var_dump($sqlString);
+
+        if($this->DB->executeRaw($sqlString) !== false)
+        {
+            echo "CREATED $this->tableName\n";
+        }
+        else
+        {
+            echo "SOMETHING WENT WRONG\n";
+        }
 
 
     }

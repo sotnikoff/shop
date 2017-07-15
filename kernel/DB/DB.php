@@ -66,9 +66,17 @@ class DB
         return false;
     }
 
-    public function createTable()
+    public function executeRaw($query)
     {
-
+        try
+        {
+            return $this->connection->exec($query);
+        }
+        catch (PDOException $e)
+        {
+            var_dump($e);
+            return false;
+        }
     }
 
 }
