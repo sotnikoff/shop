@@ -20,5 +20,12 @@ class WebRoute extends RouteHandle
             'method'        =>      'index',
             'requestMethod' =>      'GET'
         ]);
+
+        $this->registerPath([
+        'path'          =>      '/test',
+        'controller'    =>      'MainController',
+        'method'        =>      'test',
+        'requestMethod' =>      'GET'
+    ]);
     }
 }

@@ -1,0 +1,10 @@
+<?php
+
+return [
+    'DBDriver'      =>  'mysql',
+    'DBHost'        =>  '127.0.0.1',
+    'DBPort'        =>  '3306',
+    'DBName'        =>  'shop',
+    'DBLogin'       =>  'root',
+    'DBPassword'    =>  '',
+];

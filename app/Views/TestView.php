@@ -7,6 +7,7 @@
     
     <script src="assets/jquery.js"></script>
 
+    <title><?=$title ?></title>
 
     <link rel="stylesheet" type="text/css" href="semantic/dist/components/reset.css">
     <link rel="stylesheet" type="text/css" href="semantic/dist/components/site.css">
