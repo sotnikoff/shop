@@ -25,7 +25,11 @@
     <link rel="stylesheet" type="text/css" href="semantic/dist/components/icon.css">
     <link rel="stylesheet" type="text/css" href="semantic/dist/components/sidebar.css">
     <link rel="stylesheet" type="text/css" href="semantic/dist/components/transition.css">
-    
+    <link rel="stylesheet" type="text/css" href="semantic/dist/components/card.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/components/dimmer.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/custom.css">
+
     <style type="text/css">
 
         .hidden.menu {
@@ -118,6 +122,7 @@
     <script src="semantic/dist/components/visibility.js"></script>
     <script src="semantic/dist/components/sidebar.js"></script>
     <script src="semantic/dist/components/transition.js"></script>
+    <script src="semantic/dist/components/dimmer.js"></script>
 
     <script>
       $(document)
@@ -141,6 +146,10 @@
             .sidebar('attach events', '.toc.item')
           ;
 
+          $('.special.cards .image').dimmer({
+            on: 'hover'
+          });
+
         })
       ;
     </script>
@@ -155,10 +164,10 @@
         <a class="item">Вакансии</a>
         <div class="right menu">
             <div class="item">
-                <a class="ui button">Log in</a>
+                <a class="ui button">Вход</a>
             </div>
             <div class="item">
-                <a class="ui primary button">Sign Up</a>
+                <a class="ui primary button">Регистрация</a>
             </div>
         </div>
     </div>
@@ -174,7 +183,7 @@
     <a class="item">Регистрация</a>
 </div>
 <div class="pusher">
-    <div class="ui inverted vertical masthead center aligned segment">
+    <div class="ui inverted vertical masthead center aligned segment" id="header">
         <div class="ui container">
             <div class="ui container">
                 <div class="ui large secondary inverted pointing menu">
@@ -194,17 +203,220 @@
 
             <div class="ui text container">
                 <h1 class="ui inverted header">
-                    Магазин диковин
+                    Магазин костылей
                 </h1>
-                <h2>Мы продаем разные штуки, которые вам не нужны. Но вы их купите.</h2>
-                <div class="ui huge primary button">Начать тратить деньги <i class="right arrow icon"></i></div>
+                <h2>Вы можете заказать нормальный софт. Но зачем, если есть мы?</h2>
+                <div class="ui huge inverted button">Начать спускать бюджет <i class="right arrow icon"></i></div>
             </div>
 
         </div>
     </div>
-    <div class="ui container">
-        
+    <div class="ui container center aligned">
+        <h1 class="ui header">Наши лучшие предложения</h1>
+
+
+        <div class="ui special cards justify_content_center" id="hot_items">
+            <div class="card">
+                <div class="blurring dimmable image">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <div class="ui inverted button">Заказать</div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="/assets/crutch.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">Костыль на PHP</a>
+                    <div class="meta">
+                        Костыльное решение
+                    </div>
+                    <div class="description">
+                        Доступно дополнительное велосипедирование
+                    </div>
+                </div>
+                <div class="extra content">
+                    <a>
+                        <i class="bug icon"></i>
+                        56 багов в комплекте
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="blurring dimmable image">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <div class="ui inverted button">Заказать</div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="/assets/crutch.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">Костыль на JS</a>
+                    <div class="meta">
+                        Костыльное решение
+                    </div>
+                    <div class="description">
+                        Современные методологии развертывания "Хуяк хуяк и в продакшен"
+                    </div>
+                </div>
+                <div class="extra content">
+                    <a>
+                        <i class="bug icon"></i>
+                        20 багов в комплекте
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="blurring dimmable image">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <div class="ui inverted button">Заказать</div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="/assets/crutch.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">Костыль на C#</a>
+                    <div class="meta">
+                        Говнокод уровня Enterprise
+                    </div>
+                    <div class="description">
+                        Доступно дополнительное велосипедирование
+                    </div>
+                </div>
+                <div class="extra content">
+                    <a>
+                        <i class="bug icon"></i>
+                        20 багов в комплекте
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="blurring dimmable image">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <div class="ui inverted button">Заказать</div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="/assets/crutch.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">Костыль на Java</a>
+                    <div class="meta">
+                        Костыльное решение
+                    </div>
+                    <div class="description">
+                        Изобретение велосипеда по высоким ценам
+                    </div>
+                </div>
+                <div class="extra content">
+                    <a>
+                        <i class="bug icon"></i>
+                        200 багов в комплекте
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="blurring dimmable image">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <div class="ui inverted button">Заказать</div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="/assets/crutch.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">Костыль на 1С:Предприятие</a>
+                    <div class="meta">
+                        Комплексная костылизация
+                    </div>
+                    <div class="description">
+                        Доступно дополнительное велосипедирование
+                    </div>
+                </div>
+                <div class="extra content">
+                    <a>
+                        <i class="handicap icon"></i>
+                        Предложение для ограниченных в возможностях
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="blurring dimmable image">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <div class="ui inverted button">Заказать</div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="/assets/crutch.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">Костыль на ABAP</a>
+                    <div class="meta">
+                        Пожизненная костылизация
+                    </div>
+                    <div class="description">
+                        В комплект поставки входит подготовление персонала к апокалипсису
+                    </div>
+                </div>
+                <div class="extra content">
+                    <a>
+                        <i class="bug icon"></i>
+                        Безлимит на баги
+                    </a>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+    <div class="ui inverted vertical footer segment">
+        <div class="ui container">
+            <div class="ui stackable inverted divided equal height stackable grid">
+                <div class="three wide column">
+                    <h4 class="ui inverted header">О компании</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">Карта сайта</a>
+                        <a href="#" class="item">Связаться с нами</a>
+                        <a href="#" class="item">Наши религиозные убеждения</a>
+                        <a href="#" class="item">Планы порабощения мира</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Услуги</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">Костылизация</a>
+                        <a href="#" class="item">Велосипедирование</a>
+                        <a href="#" class="item">Миграция зарплатного фонда с рублей на доширак</a>
+                        <a href="#" class="item">Разработка ТЗ на салфетке</a>
+                        <a href="#" class="item">Индивидуальные решения</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header">Другие вещи</h4>
+                    <p>Мы рады придумать для Вас что-то особое...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 </body>
