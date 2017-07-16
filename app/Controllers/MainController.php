@@ -10,6 +10,7 @@ namespace App\Controllers;
 
 
 use App\Migrations\ItemsMigration;
+use App\Models\Item;
 use Kernel\Controller;
 use Kernel\ViewHandler as View;
 use Kernel\DB\DB;
@@ -25,7 +26,10 @@ class MainController extends Controller
 
     public function test()
     {
-        new ItemsMigration();
+        $aa = Item::create(['name'=>'Статья','photo'=>'http://asd']);
+
+        var_dump($aa);
+
     }
 
 }

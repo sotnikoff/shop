@@ -79,4 +79,52 @@ class DB
         }
     }
 
+    public static function create($table,$params)
+    {
+        //INSERT INTO `items` (`name`,`photo`) VALUES ('123','123');
+        $vals = [];
+        $cols = [];
+
+        var_dump($params);
+
+        foreach ($params as $key => $val)
+        {
+            $cols[] = "`$key`";
+            $vals[] = ":$key";
+        }
+
+
+
+        $obj = new static();
+        $connect = $obj->connection;
+
+        $text = "INSERT INTO `".$obj->database."`.`".$table."` (".implode(',',$cols).") VALUES (".implode(',',$vals).")";
+
+        $statement = $connect->prepare($text);
+
+        foreach ($params as $key => $val)
+        {
+            var_dump($key,$val);
+            $statement->bindValue(":$key",$val);
+        }
+
+        $statement->debugDumpParams();
+
+        try
+        {
+            var_dump($statement->execute());
+        }
+        catch (PDOException $exception)
+        {
+            var_dump($exception);
+        }
+
+
+        var_dump($statement->errorInfo());
+
+
+        var_dump($text);
+
+    }
+
 }
