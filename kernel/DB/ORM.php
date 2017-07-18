@@ -42,7 +42,7 @@ abstract class ORM
             }
         }
 
-        DB::create($instance->table,$verifyParams);
+        $id = DB::create($instance->table,$verifyParams);
 
         return $instance;
 
@@ -60,8 +60,6 @@ abstract class ORM
 
     public static function getAll()
     {
-        $instance = new static();
-        $instance->someProp = 23123123123;
-        return $instance;
+        //TODO : getall();
     }
 }

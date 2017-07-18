@@ -10,6 +10,7 @@ namespace App\Console;
 
 
 use App\Migrations\ItemsMigration;
+use App\Models\Item;
 
 class Kernel
 {
@@ -38,7 +39,17 @@ class Kernel
                 new ItemsMigration();
                 break;
             case 'create':
-                echo "12333\n";
+                if(!array_key_exists(2,$this->rawArgs) or !array_key_exists(3,$this->rawArgs))
+                {
+                    echo "Error\n";
+                    return false;
+                }
+
+                Item::create([
+                    "name"=>$this->rawArgs[2],
+                    "photo"=>$this->rawArgs[3],
+                ]);
+
                 break;
             default:
                 return false;

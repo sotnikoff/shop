@@ -19,6 +19,8 @@ class DB
     private $database;
     private $password;
 
+    static $obj = null;
+
     public function __construct()
     {
 
@@ -85,8 +87,6 @@ class DB
         $vals = [];
         $cols = [];
 
-        var_dump($params);
-
         foreach ($params as $key => $val)
         {
             $cols[] = "`$key`";
@@ -94,36 +94,44 @@ class DB
         }
 
 
+        if(!self::$obj)
+        {
+            self::$obj = new static();
+        }
 
-        $obj = new static();
-        $connect = $obj->connection;
+        $connect = self::$obj->connection;
 
-        $text = "INSERT INTO `".$obj->database."`.`".$table."` (".implode(',',$cols).") VALUES (".implode(',',$vals).")";
+        $text = "INSERT INTO `".self::$obj->database."`.`".$table."` (".implode(',',$cols).") VALUES (".implode(',',$vals).")";
 
         $statement = $connect->prepare($text);
 
         foreach ($params as $key => $val)
         {
-            var_dump($key,$val);
             $statement->bindValue(":$key",$val);
         }
 
-        $statement->debugDumpParams();
-
-        try
+        if(!$statement->execute())
         {
-            var_dump($statement->execute());
-        }
-        catch (PDOException $exception)
-        {
-            var_dump($exception);
+            var_dump($statement->errorInfo());
         }
 
+        return self::$obj->connection->lastInsertId();
 
-        var_dump($statement->errorInfo());
+    }
 
 
-        var_dump($text);
+    public static function query($query = null,$table)
+    {
+        if(!self::$obj)
+        {
+            self::$obj = new static();
+        }
+
+        $connect = self::$obj->connection;
+
+        $text = "SELECT * FROM `".self::$obj->database."`.`".$table;
+
+
 
     }
 
