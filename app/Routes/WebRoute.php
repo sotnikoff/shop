@@ -25,7 +25,7 @@ class WebRoute extends RouteHandle
         'path'          =>      '/test',
         'controller'    =>      'MainController',
         'method'        =>      'test',
-        'requestMethod' =>      'GET'
+        'requestMethod' =>      'POST'
     ]);
     }
 }

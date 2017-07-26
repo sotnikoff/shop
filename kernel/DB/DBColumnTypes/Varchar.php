@@ -57,18 +57,28 @@ class Varchar
         return $this->columnType;
     }
 
+    /**
+     * @param $length
+     * @return $this
+     */
     public function length($length)
     {
         $this->length = $length;
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function nullable()
     {
         $this->nullable = true;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getSqlString()
     {
 

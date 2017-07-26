@@ -8,12 +8,8 @@
 
 namespace App\Controllers;
 
-
-use App\Migrations\ItemsMigration;
-use App\Models\Item;
 use Kernel\Controller;
 use Kernel\ViewHandler as View;
-use Kernel\DB\DB;
 
 class MainController extends Controller
 {
@@ -24,12 +20,10 @@ class MainController extends Controller
         $view->render();
     }
 
-    public function test()
+    public function test($request)
     {
-        $aa = Item::create(['name'=>'Статья','photo'=>'http://asd']);
-
-        var_dump($aa);
-
+        $content = trim(file_get_contents("php://input"));
+        var_dump($content);
     }
 
 }

@@ -8,7 +8,8 @@
 
 namespace Kernel\DB;
 
-use Kernel\DB\DB;
+//use Kernel\DB\DB;
+
 
 abstract class ORM
 {
@@ -53,9 +54,9 @@ abstract class ORM
         //TODO: findByQuery()
     }
 
-    public static function find()
+    public static function findById($id)
     {
-        //TODO: find()
+
     }
 
     public static function getAll()

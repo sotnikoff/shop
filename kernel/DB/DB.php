@@ -10,6 +10,7 @@ namespace Kernel\DB;
 
 use \PDO;
 use \PDOException;
+use Kernel\DB\QueryBuilder;
 
 class DB
 {
@@ -21,6 +22,9 @@ class DB
 
     static $obj = null;
 
+    /**
+     * DB constructor.
+     */
     public function __construct()
     {
 
@@ -51,6 +55,9 @@ class DB
         return $this->database;
     }
 
+    /**
+     * @return bool
+     */
     private function getSettings()
     {
         $fileName = __DIR__ . '/../../settings.php';
@@ -81,6 +88,11 @@ class DB
         }
     }
 
+    /**
+     * @param $table
+     * @param $params
+     * @return mixed
+     */
     public static function create($table,$params)
     {
         //INSERT INTO `items` (`name`,`photo`) VALUES ('123','123');
@@ -119,8 +131,11 @@ class DB
 
     }
 
-
-    public static function query($query = null,$table)
+    /**
+     * @param string null $query
+     * @param string $table
+     */
+    public static function query($query = null, $params = [], $table)
     {
         if(!self::$obj)
         {
@@ -129,9 +144,25 @@ class DB
 
         $connect = self::$obj->connection;
 
-        $text = "SELECT * FROM `".self::$obj->database."`.`".$table;
+        if($query){
+            $query_text = $query;
+        }else{
+            $query_text = '';
+        }
 
+        $text = "SELECT * FROM `".self::$obj->database."`.`".$table.$query_text;
 
+        $statement = $connect->prepare($text);
+
+        foreach ($params as $key => $val)
+        {
+            $statement->bindValue(":$key",$val);
+        }
+
+        if(!$statement->execute())
+        {
+            var_dump($statement->errorInfo());
+        }
 
     }
 
