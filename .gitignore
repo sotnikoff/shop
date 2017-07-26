@@ -4,4 +4,4 @@ npm-debug.log
 /.idea
 /.DS_STORE
 settings.php
-/semantic
+semantic/
